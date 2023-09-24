@@ -7,7 +7,7 @@ const dashboardGetRequest = async (req, res) => {
 
         if (userInfo === null) return res.redirect('/host');
 
-        const roomList = await Room.find({}, {
+        const roomList = await Room.find({ 'ownerId': userInfo._id }, {
             '_id': 0, 'roomId': 1, 'roomType': 1, 'title': 1, 'description': 1,'location': 1, 'availableFrom': 1, 'availableUpto': 1, 'rating': 1, 'price': 1, 'discount': 1, 'images': 1, 'hidden': 1
         });
 
